@@ -21,7 +21,7 @@ print('Contour size:', len(contours))
 img = cv2.drawContours(img_gray, contours, -1, (0, 255, 0), 3)
 cv2.imshow('contour', img)
 while True:
-	if cv2.waitKey(1) == ord('q'):
+	if cv2.waitKey(100) == ord('q'):
 		break
 
 cv2.destroyAllWindows()

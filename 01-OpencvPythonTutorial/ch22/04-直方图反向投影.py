@@ -36,13 +36,13 @@ B = R[h.ravel(), s.ravel()]
 B = np.minimum(B, 1)
 B = B.reshape(hsv1.shape[:2])*255
 
-strcture = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-B = cv2.filter2D(B, -1, strcture)
+strcture = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))  # 定义结构元素，类似CNN中的filter
+B = cv2.filter2D(B, -1, strcture)  # 卷积运算
 B = np.uint8(B)
 ret, thresh = cv2.threshold(B, 50, 255, 0)
 
 thresh = cv2.merge((thresh, thresh, thresh))
-res = cv2.bitwise_and(im1, thresh)
+res = cv2.bitwise_and(im1, thresh)  # 与
 cv2.imshow('res', res)
 
 dst = cv2.calcBackProject([hsv1], [0, 1], hist2, [0, 180, 0, 256], 1)
